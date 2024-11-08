@@ -2,7 +2,7 @@ import type { z } from "@hono/zod-openapi";
 
 export const openApiConfig = {
   openapi: "3.0.0",
-  servers: [{ url: "http://localhost:3000" }],
+  servers: [{ url: "http://localhost:3000/api" }],
   info: { version: "1.0.0", title: "Book API" },
   tags: [
     { name: "Book" },
