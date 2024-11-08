@@ -62,7 +62,7 @@ export const getOne: RouteHandler<GetOneRoute> = async (ctx) => {
 
 export const create: RouteHandler<CreateRoute> = async (ctx) => {
   const newBook = ctx.req.valid("json");
-  await db.insert(books).values(newBook);
+  await db.insert(books).values(newBook).execute();
   return ctx.newResponse(null, 201);
 };
 
