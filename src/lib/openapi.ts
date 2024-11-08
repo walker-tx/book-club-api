@@ -1,8 +1,10 @@
 import type { z } from "@hono/zod-openapi";
 
+const mainServerUrl = process.env.VERCEL_URL ?? "http://localhost:3000";
+
 export const openApiConfig = {
   openapi: "3.0.0",
-  servers: [{ url: "http://localhost:3000/api" }],
+  servers: [{ url: mainServerUrl }],
   info: { version: "1.0.0", title: "Book API" },
   tags: [
     { name: "Book" },
