@@ -1,6 +1,8 @@
 import type { z } from "@hono/zod-openapi";
 
-const mainServerUrl = process.env.VERCEL_URL ?? "http://localhost:3000";
+const mainServerUrl = process.env.VERCEL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}/api`
+  : "http://localhost:3000/api";
 
 export const openApiConfig = {
   openapi: "3.0.0",
