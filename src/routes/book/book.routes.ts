@@ -104,11 +104,6 @@ export const create = createRoute({
   responses: {
     201: {
       description: "Book created",
-      content: {
-        "application/json": {
-          schema: BookSchema,
-        },
-      },
     },
     400: {
       description: "Bad Request",

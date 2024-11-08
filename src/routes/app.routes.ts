@@ -4,8 +4,11 @@ import { openApiConfig } from "../lib/openapi.js";
 import authRouteGroup from "./auth/index.js";
 import bookRouteGroup from "./book/index.js";
 import userRouteGroup from "./user/index.js";
+import { logger } from "hono/logger";
 
 const app = new OpenAPIHono();
+
+app.use("/*", logger());
 
 app.route("/book", bookRouteGroup);
 app.route("/auth", authRouteGroup);

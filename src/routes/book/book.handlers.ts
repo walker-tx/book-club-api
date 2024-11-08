@@ -52,7 +52,6 @@ export const list: RouteHandler<ListRoute> = async (ctx) => {
 export const getOne: RouteHandler<GetOneRoute> = async (ctx) => {
   const { id } = ctx.req.valid("param");
   const book = await db.query.books.findFirst({ where: eq(books.id, id) });
-  console.log(book);
 
   if (!book) {
     return ctx.json({ code: 404, message: "Book not found" }, 404);
@@ -63,8 +62,8 @@ export const getOne: RouteHandler<GetOneRoute> = async (ctx) => {
 
 export const create: RouteHandler<CreateRoute> = async (ctx) => {
   const newBook = ctx.req.valid("json");
-  const createdBook = await db.insert(books).values(newBook).returning();
-  return ctx.json(createdBook[0], 201);
+  await db.insert(books).values(newBook);
+  return ctx.newResponse(null, 201);
 };
 
 export const _delete: RouteHandler<DeleteRoute> = async (ctx) => {
