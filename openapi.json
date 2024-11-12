@@ -31,9 +31,7 @@
       "maxElapsedTime": 3600000,
       "exponent": 1.5
     },
-    "statusCodes": [
-      "5XX"
-    ],
+    "statusCodes": ["5XX"],
     "retryConnectionErrors": true
   },
   "components": {
@@ -58,12 +56,7 @@
             "maxLength": 10
           }
         },
-        "required": [
-          "id",
-          "title",
-          "author",
-          "isbn10"
-        ],
+        "required": ["id", "title", "author", "isbn10"],
         "example": {
           "id": 1,
           "title": "Frankenstein",
@@ -89,11 +82,7 @@
             }
           }
         },
-        "required": [
-          "next",
-          "previous",
-          "results"
-        ],
+        "required": ["next", "previous", "results"],
         "example": {
           "next": "https://api.example.com/endpoint?limit=10&offset=10",
           "previous": null,
@@ -117,10 +106,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "code",
-          "message"
-        ],
+        "required": ["code", "message"],
         "example": {
           "code": 400,
           "message": "Bad Request"
@@ -141,11 +127,7 @@
             "format": "email"
           }
         },
-        "required": [
-          "id",
-          "username",
-          "email"
-        ],
+        "required": ["id", "username", "email"],
         "example": {
           "id": 1,
           "username": "john_doe",
@@ -159,9 +141,7 @@
     "/book": {
       "get": {
         "description": "List all books",
-        "tags": [
-          "Book"
-        ],
+        "tags": ["Book"],
         "operationId": "listBooks",
         "x-speakeasy-name-override": "list",
         "x-speakeasy-pagination": {
@@ -240,9 +220,7 @@
       },
       "post": {
         "description": "Create a book",
-        "tags": [
-          "Book"
-        ],
+        "tags": ["Book"],
         "operationId": "createBook",
         "x-speakeasy-name-override": "create",
         "requestBody": {
@@ -266,11 +244,7 @@
                     "maxLength": 10
                   }
                 },
-                "required": [
-                  "title",
-                  "author",
-                  "isbn10"
-                ],
+                "required": ["title", "author", "isbn10"],
                 "example": {
                   "title": "Frankenstein",
                   "author": "Mary Shelley",
@@ -312,9 +286,7 @@
     "/book/{id}": {
       "get": {
         "description": "Get a book by ID",
-        "tags": [
-          "Book"
-        ],
+        "tags": ["Book"],
         "operationId": "getBook",
         "x-speakeasy-name-override": "get",
         "parameters": [
@@ -371,9 +343,7 @@
       },
       "delete": {
         "description": "Delete a book",
-        "tags": [
-          "Book"
-        ],
+        "tags": ["Book"],
         "operationId": "deleteBook",
         "x-speakeasy-name-override": "delete",
         "parameters": [
@@ -419,9 +389,7 @@
     "/auth/signup": {
       "post": {
         "description": "Sign up",
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "operationId": "signup",
         "requestBody": {
           "required": true,
@@ -447,11 +415,7 @@
                     "example": "mrg.qka5awy2jya*FTK"
                   }
                 },
-                "required": [
-                  "username",
-                  "email",
-                  "password"
-                ],
+                "required": ["username", "email", "password"],
                 "example": {
                   "username": "jdoe123",
                   "email": "jdoe123@email.com",
@@ -481,9 +445,7 @@
     "/auth/login": {
       "post": {
         "description": "Log in",
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "operationId": "login",
         "requestBody": {
           "required": true,
@@ -503,10 +465,7 @@
                     "example": "mrg.qka5awy2jya*FTK"
                   }
                 },
-                "required": [
-                  "email",
-                  "password"
-                ],
+                "required": ["email", "password"],
                 "example": {
                   "email": "jdoe123@email.com",
                   "password": "mrg.qka5awy2jya*FTK"
@@ -528,9 +487,7 @@
                       "example": "eyJhbGciO..."
                     }
                   },
-                  "required": [
-                    "token"
-                  ],
+                  "required": ["token"],
                   "example": {
                     "token": "eyJhbGci..."
                   }
@@ -574,9 +531,7 @@
     "/user/{id}": {
       "get": {
         "description": "Get a user by ID",
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "operationId": "getUser",
         "x-speakeasy-name-override": "get",
         "parameters": [
@@ -629,9 +584,7 @@
     "/user/{userId}/library": {
       "get": {
         "description": "List books by user",
-        "tags": [
-          "Library"
-        ],
+        "tags": ["Library"],
         "operationId": "getUserLibrary",
         "x-speakeasy-name-override": "get",
         "x-speakeasy-pagination": {
@@ -760,9 +713,7 @@
       },
       "post": {
         "description": "Add book to user library",
-        "tags": [
-          "Library"
-        ],
+        "tags": ["Library"],
         "operationId": "addBookToUserLibrary",
         "x-speakeasy-name-override": "add",
         "parameters": [
@@ -791,9 +742,7 @@
                     "exclusiveMinimum": true
                   }
                 },
-                "required": [
-                  "bookId"
-                ]
+                "required": ["bookId"]
               },
               "example": {
                 "bookId": 123

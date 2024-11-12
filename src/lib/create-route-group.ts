@@ -7,7 +7,7 @@ export function createRouteGroup() {
       if (!result.success) {
         return ctx.json(
           { code: 400, message: formatZodError(result.error) },
-          400
+          400,
         );
       }
     },

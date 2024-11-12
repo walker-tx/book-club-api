@@ -82,12 +82,8 @@
           "name": "api_keys_userId_users_id_fk",
           "tableFrom": "api_keys",
           "tableTo": "users",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -97,16 +93,12 @@
         "api_keys_appId_unique": {
           "name": "api_keys_appId_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "appId"
-          ]
+          "columns": ["appId"]
         },
         "api_keys_key_unique": {
           "name": "api_keys_key_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "key"
-          ]
+          "columns": ["key"]
         }
       },
       "policies": {},
@@ -160,9 +152,7 @@
         "books_isbn10_unique": {
           "name": "books_isbn10_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "isbn10"
-          ]
+          "columns": ["isbn10"]
         }
       },
       "policies": {},
@@ -232,9 +222,7 @@
         "users_email_unique": {
           "name": "users_email_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         }
       },
       "policies": {},
@@ -264,12 +252,8 @@
           "name": "users_to_books_userId_users_id_fk",
           "tableFrom": "users_to_books",
           "tableTo": "users",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -277,12 +261,8 @@
           "name": "users_to_books_bookId_books_id_fk",
           "tableFrom": "users_to_books",
           "tableTo": "books",
-          "columnsFrom": [
-            "bookId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["bookId"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -290,10 +270,7 @@
       "compositePrimaryKeys": {
         "users_to_books_userId_bookId_pk": {
           "name": "users_to_books_userId_bookId_pk",
-          "columns": [
-            "userId",
-            "bookId"
-          ]
+          "columns": ["userId", "bookId"]
         }
       },
       "uniqueConstraints": {},

@@ -16,7 +16,7 @@ export const users = pgTable(
     email: varchar({ length: 255 }).notNull().unique(),
     password: varchar({ length: 255 }).notNull(),
   },
-  (table) => [index("email_index").on(table.email)]
+  (table) => [index("email_index").on(table.email)],
 );
 
 export const userRelations = relations(users, ({ many }) => ({
@@ -45,7 +45,7 @@ export const usersToBooks = pgTable(
       .notNull()
       .references(() => books.id),
   },
-  (t) => [primaryKey({ columns: [t.userId, t.bookId] })]
+  (t) => [primaryKey({ columns: [t.userId, t.bookId] })],
 );
 
 export const usersToBooksRelations = relations(usersToBooks, ({ one }) => ({
@@ -66,7 +66,7 @@ export const apiKeys = pgTable(
   (table) => [
     index("user_id_index").on(table.userId),
     index("app_id_index").on(table.appId),
-  ]
+  ],
 );
 
 export const apiKeyRelations = relations(apiKeys, ({ one }) => ({

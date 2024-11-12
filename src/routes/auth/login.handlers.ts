@@ -15,7 +15,7 @@ export const login: RouteHandler<LoginRoute> = async (ctx) => {
   if (!foundUser) {
     return ctx.json(
       { code: 401, message: "Invalid email/password combination" },
-      404
+      404,
     );
   }
 
@@ -24,7 +24,7 @@ export const login: RouteHandler<LoginRoute> = async (ctx) => {
   if (!passwordMatch) {
     return ctx.json(
       { code: 401, message: "Invalid email/password combination" },
-      401
+      401,
     );
   }
 
@@ -39,7 +39,7 @@ export const login: RouteHandler<LoginRoute> = async (ctx) => {
       nbf: nowTs,
       iat: nowTs,
     },
-    process.env.JWT_SECRET!
+    process.env.JWT_SECRET!,
   );
 
   return ctx.json({ token }, 200);

@@ -24,7 +24,7 @@ export const list: RouteHandler<ListUserBooksRoute> = async (ctx) => {
   if (userBooks.length === 0) {
     return ctx.json(
       { code: 404, message: "User not found or no books found" },
-      404
+      404,
     );
   }
 
@@ -34,9 +34,9 @@ export const list: RouteHandler<ListUserBooksRoute> = async (ctx) => {
       limit,
       offset,
       librarySize[0].count,
-      userBooks.map((ub) => ub.book)
+      userBooks.map((ub) => ub.book),
     ),
-    200
+    200,
   );
 };
 
@@ -47,7 +47,7 @@ export const add: RouteHandler<AddUserBookRoute> = async (ctx) => {
   const existingUserBook = await db.query.usersToBooks.findFirst({
     where: and(
       eq(usersToBooks.userId, userId),
-      eq(usersToBooks.bookId, bookId)
+      eq(usersToBooks.bookId, bookId),
     ),
   });
 
@@ -55,10 +55,7 @@ export const add: RouteHandler<AddUserBookRoute> = async (ctx) => {
     return ctx.json({ code: 409, message: "Book already added to user" }, 409);
   }
 
-  const insertedUserBook = await db
-    .insert(usersToBooks)
-    .values({ userId, bookId })
-    .returning();
+  await db.insert(usersToBooks).values({ userId, bookId }).returning();
 
   return ctx.newResponse(null, 201);
 };

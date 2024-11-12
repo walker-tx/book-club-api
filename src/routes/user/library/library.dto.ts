@@ -7,7 +7,7 @@ export const UserIdParamsSchema = z.object({
 });
 
 export const PaginatedLibraryResponseSchema = createPaginationResponseSchema(
-  BookSchema.nullable()
+  BookSchema.nullable(),
 );
 
 export const AddRequestBody = z.object({

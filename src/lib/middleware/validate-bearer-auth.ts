@@ -7,16 +7,16 @@ export const validateBearerAuth: MiddlewareHandler = async (ctx, next) => {
   if (!authHeader) {
     return ctx.json(
       { code: 401, message: "Use of this service requires a bearer token." },
-      { status: 401 }
+      { status: 401 },
     );
   }
 
-  const [prefix, token] = authHeader?.split(" ");
+  const [prefix, token] = authHeader.split(" ");
 
   if (prefix !== "Bearer" || !token) {
     return ctx.json(
       { code: 401, message: "Invalid authorization header" },
-      { status: 401 }
+      { status: 401 },
     );
   }
 

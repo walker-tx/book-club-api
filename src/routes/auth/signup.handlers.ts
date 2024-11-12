@@ -16,7 +16,7 @@ export const signup: RouteHandler<SignupRoute> = async (ctx) => {
 
   const hashedPw = await bcrypt.hash(password, 10);
 
-  const x = await db.insert(users).values({
+  await db.insert(users).values({
     email,
     username,
     password: hashedPw,

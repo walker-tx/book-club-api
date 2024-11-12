@@ -12,19 +12,19 @@ const GenericPaginatedResponseSchema = z.object({
 });
 
 export function createPaginationResponseSchema<T extends z.ZodTypeAny>(
-  schema: T
+  schema: T,
 ) {
   const schemaName = schema._def.openapi?._internal?.refId;
   const example = schema._def.openapi?.metadata?.example;
 
   if (!schemaName) {
     throw new Error(
-      "Schema must have an openapi definition that includes a schema name and example"
+      "Schema must have an openapi definition that includes a schema name and example",
     );
   }
 
   return GenericPaginatedResponseSchema.merge(
-    z.object({ results: z.array(schema) })
+    z.object({ results: z.array(schema) }),
   )
     .openapi({
       example: {
@@ -41,7 +41,7 @@ export function createPaginatedResponseJson<TData>(
   limit: number,
   offset: number,
   totalCount: number,
-  results: TData[]
+  results: TData[],
 ) {
   let next: string | null = null;
   if (offset + limit < totalCount) {

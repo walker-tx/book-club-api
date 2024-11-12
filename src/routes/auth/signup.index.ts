@@ -4,5 +4,5 @@ import * as handlers from "./signup.handlers.js";
 
 export const signupRouteGroup = createRouteGroup().openapi(
   routes.signup,
-  handlers.signup
+  handlers.signup,
 );

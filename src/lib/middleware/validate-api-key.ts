@@ -12,7 +12,7 @@ export const validateApiKey: MiddlewareHandler = async (ctx, next) => {
   if (!appId || !apiKey) {
     return ctx.json<z.infer<typeof ErrorSchema>>(
       { code: 401, message: "Use of this service requires an API ID and Key." },
-      { status: 401 }
+      { status: 401 },
     );
   }
 
@@ -23,7 +23,7 @@ export const validateApiKey: MiddlewareHandler = async (ctx, next) => {
   if (!apiKeyRecord) {
     return ctx.json<z.infer<typeof ErrorSchema>>(
       { code: 401, message: "Invalid API ID." },
-      { status: 401 }
+      { status: 401 },
     );
   }
 
@@ -32,7 +32,7 @@ export const validateApiKey: MiddlewareHandler = async (ctx, next) => {
   if (!isValid) {
     return ctx.json<z.infer<typeof ErrorSchema>>(
       { code: 401, message: "Invalid API Key." },
-      { status: 401 }
+      { status: 401 },
     );
   }
 

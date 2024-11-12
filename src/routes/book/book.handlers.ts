@@ -45,7 +45,7 @@ export const list: RouteHandler<ListRoute> = async (ctx) => {
       },
       results,
     },
-    200
+    200,
   );
 };
 

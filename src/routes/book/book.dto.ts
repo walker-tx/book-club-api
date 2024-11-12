@@ -1,6 +1,5 @@
 import { z } from "@hono/zod-openapi";
 import { createPaginationResponseSchema } from "../../lib/pagination.js";
-import { getExampleFromComponentSchema } from "../../lib/openapi.js";
 
 export const BookSchema = z
   .object({

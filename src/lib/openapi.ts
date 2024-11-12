@@ -28,7 +28,7 @@ export const openApiConfig = {
 };
 
 export function getExampleFromComponentSchema<T extends z.ZodTypeAny>(
-  componentSchema: T
+  componentSchema: T,
 ): z.infer<T> {
   const example = componentSchema._def.openapi?.metadata?.example;
   if (!example) throw new Error("Schema must have an example");
