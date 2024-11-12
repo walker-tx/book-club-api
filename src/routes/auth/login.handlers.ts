@@ -1,9 +1,9 @@
 import type { RouteHandler } from "@hono/zod-openapi";
-import type { LoginRoute } from "./login.routes.js";
-import { db, users } from "../../db/index.js";
-import { eq } from "drizzle-orm";
 import bcrypt from "bcrypt";
+import { eq } from "drizzle-orm";
 import { sign } from "hono/jwt";
+import { db, users } from "../../db/index.js";
+import type { LoginRoute } from "./login.routes.js";
 
 export const login: RouteHandler<LoginRoute> = async (ctx) => {
   const { email, password } = ctx.req.valid("json");
@@ -28,12 +28,16 @@ export const login: RouteHandler<LoginRoute> = async (ctx) => {
     );
   }
 
+  const nowTs = Math.floor(Date.now() / 1000);
+
   const token = await sign(
     {
       id: foundUser.id,
       email: foundUser.email,
       username: foundUser.username,
-      exp: Math.floor(Date.now() / 1000) + 60 * 60,
+      exp: nowTs + 60 * 60,
+      nbf: nowTs,
+      iat: nowTs,
     },
     process.env.JWT_SECRET!
   );

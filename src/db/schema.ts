@@ -4,6 +4,7 @@ import {
   integer,
   pgTable,
   primaryKey,
+  uuid,
   varchar,
 } from "drizzle-orm/pg-core";
 
@@ -20,6 +21,7 @@ export const users = pgTable(
 
 export const userRelations = relations(users, ({ many }) => ({
   usersToBooks: many(usersToBooks),
+  usersToApiKeys: many(apiKeys),
 }));
 
 export const books = pgTable("books", {
@@ -49,4 +51,24 @@ export const usersToBooks = pgTable(
 export const usersToBooksRelations = relations(usersToBooks, ({ one }) => ({
   user: one(users),
   book: one(books),
+}));
+
+export const apiKeys = pgTable(
+  "api_keys",
+  {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    userId: integer()
+      .notNull()
+      .references(() => users.id),
+    appId: uuid().unique().defaultRandom(),
+    key: varchar({ length: 255 }).notNull().unique(),
+  },
+  (table) => [
+    index("user_id_index").on(table.userId),
+    index("app_id_index").on(table.appId),
+  ]
+);
+
+export const apiKeyRelations = relations(apiKeys, ({ one }) => ({
+  user: one(users),
 }));

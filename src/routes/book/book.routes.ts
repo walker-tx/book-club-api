@@ -1,5 +1,6 @@
 import { createRoute } from "@hono/zod-openapi";
 import { ErrorSchema } from "../../lib/errors.js";
+import { getExampleFromComponentSchema } from "../../lib/openapi.js";
 import {
   paginationMixin,
   PaginationRequestQuerySchema,
@@ -10,7 +11,6 @@ import {
   CreateBookRequestBody,
   PaginatedBookResponseSchema,
 } from "./book.dto.js";
-import { getExampleFromComponentSchema } from "../../lib/openapi.js";
 
 export const list = createRoute({
   description: "List all books",

@@ -1,8 +1,8 @@
-import bcrypt from "bcrypt";
 import type { RouteHandler } from "@hono/zod-openapi";
-import type { SignupRoute } from "./signup.routes.js";
-import { db, users } from "../../db/index.js";
+import bcrypt from "bcrypt";
 import { eq } from "drizzle-orm";
+import { db, users } from "../../db/index.js";
+import type { SignupRoute } from "./signup.routes.js";
 
 export const signup: RouteHandler<SignupRoute> = async (ctx) => {
   const { username, email, password } = ctx.req.valid("json");
@@ -21,8 +21,6 @@ export const signup: RouteHandler<SignupRoute> = async (ctx) => {
     username,
     password: hashedPw,
   });
-
-  console.log({ x });
 
   return ctx.newResponse(null, 201);
 };

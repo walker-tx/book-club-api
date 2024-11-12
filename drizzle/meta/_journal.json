@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1731340804282,
+      "tag": "0000_colossal_shadow_king",
+      "breakpoints": true
+    }
+  ]
+}
