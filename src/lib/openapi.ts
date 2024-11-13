@@ -25,6 +25,26 @@ export const openApiConfig = {
     statusCodes: ["5XX"],
     retryConnectionErrors: true,
   },
+  "x-speakeasy-globals": {
+    parameters: [
+      {
+        name: "x-api-key",
+        in: "header",
+        schema: {
+          type: "string",
+        },
+        "x-speakeasy-globals-hidden": true,
+      },
+      {
+        name: "x-app-id",
+        in: "header",
+        schema: {
+          type: "string",
+        },
+        "x-speakeasy-globals-hidden": true,
+      },
+    ],
+  },
 };
 
 export function getExampleFromComponentSchema<T extends z.ZodTypeAny>(

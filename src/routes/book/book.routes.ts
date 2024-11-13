@@ -5,6 +5,7 @@ import {
   paginationMixin,
   PaginationRequestQuerySchema,
 } from "../../lib/pagination.js";
+import { securityMixins } from "../../lib/security.js";
 import { IdParamsSchema } from "../app.dto.js";
 import {
   BookSchema,
@@ -42,6 +43,7 @@ export const list = createRoute({
     },
   },
   ...paginationMixin,
+  ...securityMixins,
 });
 
 export const getOne = createRoute({
@@ -81,6 +83,7 @@ export const getOne = createRoute({
       },
     },
   },
+  ...securityMixins,
 });
 
 export const create = createRoute({
@@ -114,6 +117,7 @@ export const create = createRoute({
       },
     },
   },
+  ...securityMixins,
 });
 
 export const _delete = createRoute({
@@ -147,6 +151,7 @@ export const _delete = createRoute({
       },
     },
   },
+  ...securityMixins,
 });
 
 export type ListRoute = typeof list;

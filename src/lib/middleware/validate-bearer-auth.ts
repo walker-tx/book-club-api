@@ -1,7 +1,15 @@
 import { verify } from "hono/jwt";
-import type { MiddlewareHandler } from "hono/types";
+import type { MiddlewareHandler, Env } from "hono/types";
+import { JWTPayload } from "hono/utils/jwt/types";
 
-export const validateBearerAuth: MiddlewareHandler = async (ctx, next) => {
+type ValidationBearerAuthMiddlewareHandler = MiddlewareHandler<
+  Env & { jwtPaylod: JWTPayload }
+>;
+
+export const validateBearerAuth: ValidationBearerAuthMiddlewareHandler = async (
+  ctx,
+  next,
+) => {
   const authHeader = ctx.req.header("authorization");
 
   if (!authHeader) {
@@ -22,7 +30,7 @@ export const validateBearerAuth: MiddlewareHandler = async (ctx, next) => {
 
   try {
     const results = await verify(token, process.env.JWT_SECRET!);
-    console.log({ results });
+    ctx.set("jwtPayload", results);
   } catch {
     return ctx.json({ code: 401, message: "Invalid token." }, { status: 401 });
   }

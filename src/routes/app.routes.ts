@@ -30,16 +30,6 @@ app.openAPIRegistry.registerComponent("securitySchemes", "AppIdAuth", {
 
 app.use("/*", logger());
 
-// app.use(
-//   "^(?!/(docs|swagger)).*$",
-//   bearerAuth({
-//     verifyToken: (token, ctx) => {
-//       console.log({ token });
-//       return true;
-//     },
-//   })
-// );
-
 app.route("/book", bookRouteGroup);
 app.route("/auth", authRouteGroup);
 app.route("/user", userRouteGroup);
@@ -51,7 +41,6 @@ app.doc("/docs", {
       AppIdAuth: [],
       ApiKeyAuth: [],
     },
-    { BearerAuth: [] },
   ],
 });
 
